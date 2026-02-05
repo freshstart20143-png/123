@@ -3,181 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>財聚八方・八方聚財 | 旭嶼・Sunbay 聯名禮盒</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@300;500&display=swap" rel="stylesheet">
+    <title>旭嶼・Sunbay 歲末禮獻</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-red: #B22222;
-            --gold: #D4AF37;
-            --cream: #F9F7F2;
-            --dark-text: #2C2C2C;
+            --deep-red: #721010;
+            --velvet-red: #8B0000;
+            --brass-gold: #B3925D;
+            --dark-bg: #1A1A1A;
+            --text-gold: #E5C28B;
         }
 
-        /* 基礎樣式優化 */
         body {
             margin: 0;
-            font-family: 'Noto Sans TC', sans-serif;
-            background-color: var(--cream);
-            color: var(--dark-text);
-            overflow-x: hidden;
+            padding: 0;
+            background-color: var(--dark-bg);
+            color: var(--text-gold);
+            font-family: 'Noto Serif TC', serif;
+            letter-spacing: 0.15em;
         }
 
-        h1, h2, h3 { font-family: 'Noto Serif TC', serif; font-weight: 700; }
-
-        /* 動態進場動畫樣式 */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?q=80&w=2000');
+            height: 70vh;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--dark-bg)), 
+                        url('https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?q=80&w=1500'); 
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* 視差滾動效果 */
-            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: white;
             text-align: center;
-            padding: 0 20px;
+            border-bottom: 2px solid var(--brass-gold);
         }
 
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); letter-spacing: 12px; margin-bottom: 0.5rem; }
-        .hero h2 { font-size: clamp(1rem, 4vw, 1.5rem); font-weight: 400; opacity: 0.9; }
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 900;
+            color: #fff;
+            margin: 0;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
 
-        /* Story Section */
-        .section { padding: 100px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
-        .section-title { color: var(--primary-red); font-size: 2.2rem; margin-bottom: 40px; position: relative; }
-        .section-title::after { content: ''; display: block; width: 50px; height: 2px; background: var(--gold); margin: 15px auto; }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
 
-        /* Grid */
-        .grid {
+        .philosophy {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 20px;
+            border: 1px solid var(--brass-gold);
+            background: linear-gradient(135deg, #251010 0%, #1A1A1A 100%);
+        }
+
+        /* 產品圖片樣式優化 */
+        .product-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border: 1px solid var(--brass-gold);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
         }
 
-        .card {
-            background: #fff;
-            padding: 40px 30px;
-            border-radius: 2px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border-top: 5px solid var(--primary-red);
-            text-align: left;
+        .product-card {
+            background: #252525;
+            padding: 0; /* 讓圖片填滿上方 */
+            border: 1px solid #333;
+            overflow: hidden;
         }
 
-        .card h3 { color: var(--primary-red); margin-top: 0; border-bottom: 1px solid var(--gold); padding-bottom: 10px; }
+        .product-info {
+            padding: 25px;
+        }
 
-        /* 價格區塊 */
-        .price-banner {
-            background: var(--primary-red);
-            color: white;
-            padding: 80px 20px;
+        .product-card h3 {
+            color: var(--brass-gold);
+            margin-top: 0;
+        }
+
+        .order-section {
             text-align: center;
-            margin: 50px 0;
-            clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%); /* 絲帶感造型 */
+            background-color: var(--deep-red);
+            padding: 60px 20px;
+            border-radius: 2px;
         }
 
-        .new-price { font-size: 4rem; color: var(--gold); margin: 10px 0; font-weight: bold; }
-        
+        .price-new {
+            display: block;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--text-gold);
+            margin: 10px 0;
+        }
+
         .cta-button {
             display: inline-block;
-            padding: 18px 50px;
-            background: var(--gold);
-            color: white;
+            background-color: var(--brass-gold);
+            color: var(--dark-bg);
+            padding: 18px 40px;
             text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
             font-weight: bold;
+            border-radius: 0;
             transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .cta-button:hover { transform: scale(1.05); background: #c29d2b; }
-
-        footer { padding: 60px; text-align: center; font-size: 0.9rem; color: #666; background: #eee; }
-
+        footer { text-align: center; padding: 40px; color: #555; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <div class="reveal">
-            <h1>財聚八方 · 八方聚財</h1>
-            <h2>【旭嶼・Sunbay 獨家聯名茶香共饗禮盒】</h2>
-        </div>
-    </header>
-
-    <section class="section reveal">
-        <h2 class="section-title">品牌故事</h2>
-        <p style="font-size: 1.2rem; line-height: 2.2;">
-            送禮，不只是形式，而是表達了情誼與珍惜。<br>
-            <strong>旭日東昇</strong>，意謂美好的開始；<br>
-            <strong>寶嶼茶序</strong>，意謂著美麗的臺灣島嶼孕育著不朽的農品。<br>
-            馬躍新程，福運隨行，讓日日有茶成為最美的日常。
-        </p>
+    <section class="hero">
+        <p style="letter-spacing: 0.5em; margin-bottom: 10px; color: var(--brass-gold);">SUNBAY EXCLUSIVE</p>
+        <h1>財聚八方 · 八方聚財</h1>
+        <p>旭嶼・Sunbay 歲末聯名禮獻</p>
     </section>
 
-    <section class="section">
-        <h2 class="section-title reveal">禮盒內容物</h2>
-        <div class="grid">
-            <div class="card reveal">
-                <h3>嚴選頂級茶 (共10包)</h3>
-                <p><strong>龍藏培韻</strong>｜深焙厚實，沉穩內斂</p>
-                <p><strong>蜜琥紅烏</strong>｜蜜香圓潤，茶湯如琥珀</p>
-                <p><strong>桂花窨春</strong>｜六次窨花，清新回甘</p>
+    <div class="container">
+        <div class="philosophy">
+            <h2>美好開始，始於一席茶香</h2>
+            <p>送禮，是表達情誼與珍惜。在馬年新程之際，為您遞上一份福氣與溫度。</p>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card" style="grid-column: 1 / -1;">
+                <img src="https://files.catbox.moe/u88g0q.png" alt="嚴選頂級茶" class="product-image">
+                <div class="product-info">
+                    <h3>🍵 嚴選頂級茶 (10入)</h3>
+                    <p>龍藏培韻、蜜琥紅烏、桂花窨春。臺灣在地職人手作，封存高山氣息。這張照片展現了我們對品質的堅持，每一包茶都值得您細細品味。</p>
+                </div>
             </div>
-            <div class="card reveal" style="transition-delay: 0.2s;">
-                <h3>Sunbay 茶香爆米花</h3>
-                <p>甜而不膩，脆口涮嘴，茶香在齒頰間綻放。</p>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>🍿 茶香爆米花</h3>
+                    <p>Sunbay 獨家研發，茶粉細緻包裹，清脆間帶有濃郁餘韻。</p>
+                </div>
             </div>
-            <div class="card reveal" style="transition-delay: 0.4s;">
-                <h3>手工茶香餅乾</h3>
-                <p>茶韻優雅入餅，手工揉製的溫潤口感，餘韻悠長。</p>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>🍪 手工茶香餅乾</h3>
+                    <p>將茶韻揉入餅皮，低溫慢烤，品味每一口優雅的溫潤。</p>
+                </div>
             </div>
         </div>
-    </section>
 
-    <div class="price-banner">
-        <div class="reveal">
-            <p style="text-decoration: line-through; opacity: 0.8;">原價 NT$ 850</p>
-            <p>🧧 2026 馬年限定價 🧧</p>
-            <div class="new-price">NT$ 688</div>
-            <p>✨ 公司團體大量訂購另有優惠 ✨</p>
-            <br>
-            <a href="#" class="cta-button">點此立即預訂</a>
+        <div class="order-section">
+            <span class="price-new">🧧 開運價 $688</span>
+            <p style="margin-bottom: 30px;">✨ 公司團體/大量訂購另有優惠 ✨</p>
+            <a href="https://line.me" class="cta-button">立即洽詢訂購</a>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 旭嶼 Sunbay｜台灣茶香聯名首選</p>
+        &copy; 2026 旭嶼 · Sunbay｜馬躍新程 福運隨行
     </footer>
-
-    <script>
-        // 滑動偵測啟動動畫
-        const observerOptions = { threshold: 0.2 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    </script>
 
 </body>
 </html>
