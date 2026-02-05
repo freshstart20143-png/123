@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>財聚八方・八方聚財 | 旭嶼 Sunbay</title>
+    <style>
+        :root {
+            --red: #B22222;
+            --gold: #D4AF37;
+            --cream: #FFF9F0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--red); /* 大紅底色 */
+            font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+            color: #333;
+        }
+
+        /* 喜慶底紋背景 */
+        .wrapper {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 頂部橫幅 */
+        .banner {
+            width: 100%;
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=1500');
+            background-size: cover;
+            background-position: center;
+            color: var(--gold);
+            border-bottom: 5px solid var(--gold);
+        }
+
+        .banner h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            margin: 0;
+            letter-spacing: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        /* 內容卡片 */
+        .container {
+            max-width: 600px;
+            width: 90%;
+            background: var(--cream);
+            margin: -30px auto 50px;
+            padding: 40px 25px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border: 2px solid var(--gold);
+            box-sizing: border-box;
+        }
+
+        .brand-story {
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+        }
+
+        .brand-story p { line-height: 2; color: #555; }
+
+        .item-list { padding: 0; }
+        .item {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 5px solid var(--red);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .item h3 { margin: 0 0 10px 0; color: var(--red); font-size: 1.2rem; }
+        .item p { margin: 0; color: #666; font-size: 0.95rem; }
+
+        /* 價格標籤 */
+        .price-tag {
+            background: var(--red);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .price-tag del { opacity: 0.6; font-size: 1rem; }
+        .price-tag .now {
+            display: block;
+            font-size: 3rem;
+            color: var(--gold);
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .buy-btn {
+            display: block;
+            background: linear-gradient(to bottom, #FFD700, #B8860B);
+            color: #500;
+            text-align: center;
+            padding: 18px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        footer { color: white; padding-bottom: 30px; opacity: 0.8; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="banner">
+        <p>🧧 2026 馬躍新程 🧧</p>
+        <h1>財聚八方</h1>
+        <p>旭嶼・Sunbay 聯名茶香禮盒</p>
+    </div>
+
+    <div class="container">
+        <div class="brand-story">
+            <h2 style="color: var(--red);">八方聚財 · 萬事如意</h2>
+            <p>送禮，是情誼的珍惜。<br>旭嶼以台灣茶為本，為馬年捎來祝福之喜。<br>馬躍新程，福運隨行。</p>
+        </div>
+
+        <div class="item-list">
+            <div class="item">
+                <h3>🍵 嚴選頂級茶 (共10包)</h3>
+                <p>龍藏培韻、蜜琥紅烏、桂花窨春</p>
+            </div>
+            <div class="item">
+                <h3>🍿 Sunbay 茶香爆米花</h3>
+                <p>甜而不膩，脆口涮嘴</p>
+            </div>
+            <div class="item">
+                <h3>🍪 手工茶香餅乾</h3>
+                <p>茶韻入餅，溫潤不膩</p>
+            </div>
+        </div>
+
+        <div class="price-tag">
+            <del>原價 NT$ 850</del>
+            <span class="now">$688</span>
+            <p>✨ 公司團體大量訂購另有優惠 ✨</p>
+            <a href="https://line.me" class="buy-btn">立即加 Line 訂購</a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 旭嶼・Sunbay 獨家聯名
+    </footer>
+</div>
+
+</body>
+</html>
