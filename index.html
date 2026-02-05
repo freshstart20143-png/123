@@ -1,160 +1,183 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>財聚八方・八方聚財 | 旭嶼・Sunbay 聯名禮盒</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@300;500&display=swap" rel="stylesheet">
     <style>
-        /* 1. 核心配色與字體 */
         :root {
-            --red: #C8102E;      /* 大氣深紅 */
-            --gold: #FFD700;     /* 明亮金 */
-            --dark-gold: #B8860B;/* 沉穩金 */
-            --white: #FFFFFF;
+            --primary-red: #B22222;
+            --gold: #D4AF37;
+            --cream: #F9F7F2;
+            --dark-text: #2C2C2C;
         }
 
+        /* 基礎樣式優化 */
         body {
             margin: 0;
-            padding: 0;
-            font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
-            background: #fdf2f2; /* 淡淡的喜氣粉底 */
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark-text);
             overflow-x: hidden;
         }
 
-        /* 2. 豐富視覺裝飾：背景底紋 */
-        .main-container {
-            background-image: url('https://www.transparenttextures.com/patterns/oriental-tiles.png'); /* 中式雲紋底紋 */
-            padding-bottom: 50px;
+        h1, h2, h3 { font-family: 'Noto Serif TC', serif; font-weight: 700; }
+
+        /* 動態進場動畫樣式 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
         }
 
-        /* 3. 標題區塊：金屬質感 */
-        .header-box {
-            background: linear-gradient(135deg, var(--red) 0%, #8B0000 100%);
-            color: var(--gold);
-            text-align: center;
-            padding: 60px 20px;
-            border-bottom: 5px solid var(--gold);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .header-box h1 {
-            font-size: 42px;
-            margin: 0;
-            letter-spacing: 8px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        /* 4. 內容區塊 */
-        .content-card {
-            max-width: 800px;
-            margin: -30px auto 30px;
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border: 2px solid var(--gold);
-        }
-
-        .promo-tag {
-            background: var(--red);
-            color: white;
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        /* 5. 產品圖片區 (重點：圖片修改處) */
-        .image-placeholder {
-            width: 100%;
-            height: 400px;
-            background-color: #eee;
-            background-image: url('https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=1000'); /* 預設圖片 */
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?q=80&w=2000');
             background-size: cover;
             background-position: center;
-            border-radius: 10px;
-            margin: 20px 0;
-            border: 3px solid var(--gold);
-        }
-
-        /* 6. 價格區塊：吸睛動態 */
-        .price-section {
+            background-attachment: fixed; /* 視差滾動效果 */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
             text-align: center;
-            background: #fff5f5;
-            padding: 30px;
-            border-radius: 10px;
-            border: 1px dashed var(--red);
+            padding: 0 20px;
         }
 
-        .old-price { text-decoration: line-through; color: #888; font-size: 18px; }
-        .new-price { 
-            color: var(--red); 
-            font-size: 48px; 
-            font-weight: bold; 
-            margin: 10px 0;
-            display: block;
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); letter-spacing: 12px; margin-bottom: 0.5rem; }
+        .hero h2 { font-size: clamp(1rem, 4vw, 1.5rem); font-weight: 400; opacity: 0.9; }
+
+        /* Story Section */
+        .section { padding: 100px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .section-title { color: var(--primary-red); font-size: 2.2rem; margin-bottom: 40px; position: relative; }
+        .section-title::after { content: ''; display: block; width: 50px; height: 2px; background: var(--gold); margin: 15px auto; }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
         }
 
-        /* 7. 按鈕：閃爍金屬感 */
-        .order-btn {
-            display: block;
-            width: 250px;
-            margin: 20px auto;
-            padding: 15px;
-            background: linear-gradient(to bottom, var(--gold), var(--dark-gold));
-            color: #500;
+        .card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 2px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-top: 5px solid var(--primary-red);
+            text-align: left;
+        }
+
+        .card h3 { color: var(--primary-red); margin-top: 0; border-bottom: 1px solid var(--gold); padding-bottom: 10px; }
+
+        /* 價格區塊 */
+        .price-banner {
+            background: var(--primary-red);
+            color: white;
+            padding: 80px 20px;
             text-align: center;
+            margin: 50px 0;
+            clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%); /* 絲帶感造型 */
+        }
+
+        .new-price { font-size: 4rem; color: var(--gold); margin: 10px 0; font-weight: bold; }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: var(--gold);
+            color: white;
             text-decoration: none;
-            font-size: 22px;
-            font-weight: bold;
             border-radius: 50px;
-            box-shadow: 0 4px 0 #8b6d05;
+            font-size: 1.2rem;
+            font-weight: bold;
             transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .order-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 2px 0 #8b6d05;
-        }
+        .cta-button:hover { transform: scale(1.05); background: #c29d2b; }
 
-        /* 清單樣式 */
-        ul { list-style: none; padding: 0; }
-        li { margin-bottom: 15px; padding-left: 25px; position: relative; }
-        li::before { content: "🏮"; position: absolute; left: 0; }
+        footer { padding: 60px; text-align: center; font-size: 0.9rem; color: #666; background: #eee; }
 
     </style>
 </head>
 <body>
 
-<div class="main-container">
-    <div class="header-box">
-        <p style="letter-spacing: 5px; margin-bottom: 10px;">🧧 2026 馬躍新程 🧧</p>
-        <h1>財聚八方 · 八方聚財</h1>
-        <p>旭嶼・Sunbay 獨家聯名茶香共饗禮盒</p>
-    </div>
+    <header class="hero">
+        <div class="reveal">
+            <h1>財聚八方 · 八方聚財</h1>
+            <h2>【旭嶼・Sunbay 獨家聯名茶香共饗禮盒】</h2>
+        </div>
+    </header>
 
-    <div class="content-card">
-        <div class="promo-tag">馬年送禮首選</div>
-        <p style="font-size: 18px; color: #555; line-height: 1.8;">
+    <section class="section reveal">
+        <h2 class="section-title">品牌故事</h2>
+        <p style="font-size: 1.2rem; line-height: 2.2;">
             送禮，不只是形式，而是表達了情誼與珍惜。<br>
-            <strong>旭嶼以台灣茶為本</strong>，旭日東昇，意謂美好的開始。一席紅金禮盒，為新的一年捎來祝福之喜。
+            <strong>旭日東昇</strong>，意謂美好的開始；<br>
+            <strong>寶嶼茶序</strong>，意謂著美麗的臺灣島嶼孕育著不朽的農品。<br>
+            馬躍新程，福運隨行，讓日日有茶成為最美的日常。
         </p>
+    </section>
 
-        <div class="image-placeholder"></div>
+    <section class="section">
+        <h2 class="section-title reveal">禮盒內容物</h2>
+        <div class="grid">
+            <div class="card reveal">
+                <h3>嚴選頂級茶 (共10包)</h3>
+                <p><strong>龍藏培韻</strong>｜深焙厚實，沉穩內斂</p>
+                <p><strong>蜜琥紅烏</strong>｜蜜香圓潤，茶湯如琥珀</p>
+                <p><strong>桂花窨春</strong>｜六次窨花，清新回甘</p>
+            </div>
+            <div class="card reveal" style="transition-delay: 0.2s;">
+                <h3>Sunbay 茶香爆米花</h3>
+                <p>甜而不膩，脆口涮嘴，茶香在齒頰間綻放。</p>
+            </div>
+            <div class="card reveal" style="transition-delay: 0.4s;">
+                <h3>手工茶香餅乾</h3>
+                <p>茶韻優雅入餅，手工揉製的溫潤口感，餘韻悠長。</p>
+            </div>
+        </div>
+    </section>
 
-        <h3 style="color: var(--red); border-bottom: 2px solid var(--red); padding-bottom: 10px;">🎁 禮盒豐富內容</h3>
-        <ul>
-            <li><strong>嚴選臺灣在地頂級茶 (10包)</strong><br><small>龍藏培韻、蜜琥紅烏、桂花窨春</small></li>
-            <li><strong>Sunbay 茶香爆米花</strong><br><small>甜而不膩，脆口涮嘴</small></li>
-            <li><strong>手工茶香餅乾</strong><br><small>茶韻入餅，溫潤不膩</small></li>
-        </ul>
-
-        <div class="price-section">
-            <span class="old-price">原價 NT$ 850</span>
-            <span class="new-price">🧧 開運價 $688</span>
-            <p style="color: var(--dark-gold);">✨ 公司團體大量訂購另有優惠 ✨</p>
-            <a href="你的訂購連結" class="order-btn">立即搶購</a>
+    <div class="price-banner">
+        <div class="reveal">
+            <p style="text-decoration: line-through; opacity: 0.8;">原價 NT$ 850</p>
+            <p>🧧 2026 馬年限定價 🧧</p>
+            <div class="new-price">NT$ 688</div>
+            <p>✨ 公司團體大量訂購另有優惠 ✨</p>
+            <br>
+            <a href="#" class="cta-button">點此立即預訂</a>
         </div>
     </div>
-</div>
+
+    <footer>
+        <p>&copy; 2026 旭嶼 Sunbay｜台灣茶香聯名首選</p>
+    </footer>
+
+    <script>
+        // 滑動偵測啟動動畫
+        const observerOptions = { threshold: 0.2 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 
 </body>
 </html>
